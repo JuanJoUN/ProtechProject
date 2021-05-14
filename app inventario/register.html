@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Página beta 1.0</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,700i|Open+Sans:400,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab+Highlight:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- menu-->
+
+    <nav class="menu">
+
+        <button class="menu-button" onclick="accion()"><img src="img\icons\icon-menu.png"></button>
+        <a class="menu_a desaparece" onclick="accion()" href="Login.html">login</a>
+        <a class="menu_a desaparece" onclick="accion()" href="#">register</a>
+    </nav>
+    <img class="imga2" src="img\Logo-protech.png" alt="">
+
+    <!--registro de usuario-->
+    <main class="container">
+        <div class="row nosotros justify-content-center ">
+            <div class="col-12 text-center"></div>
+            <div class="register">
+                <form id="FormularioRegistro">
+                    <h2>Registrate</h2>
+                    <p id="msgRegistro">Ingresa los datos nesesarios para registrarte</p>
+                    <div class="register_container_blocks">
+                        <input class="rg" name="nombre" placeholder="Nombre">
+                        <p class="" id="errorNombre" >Ingrese un nombre válido</p>
+                    </div>
+                    <div class="register_container_blocks">
+                        <input class="rg" name="apellido" placeholder="Apellidos">
+                        <p id="errorApellido" >Ingrese un apellido válido</p>
+                    </div>
+                        <div class="register_container_blocks">
+                        <input class="rg" name="celular" placeholder="Numero celular">
+                        <p id="errorTelefono" >Ingrese un número de celular válido</p>
+                        </div>
+                        <div class="register_container_blocks">
+                        <input class="rg" type="password" name="contraseñaRegistro" placeholder="Contraseña">
+                        <p id="errorContrasenaRegistro" >la contraseña debe contener entre 6 y 20 caracteres</p>
+                        </div>
+                        <div class="register_container_blocks">
+                        <input class="rg" type="text" name="correo" placeholder="Correo Electronico">
+                        <p id="errorCorreo" >Ingrese un correo electrónico válido</p>
+                        </div>
+                        <div class="register_container_blocks">
+                        <input class="rg" type="password" name="verificarContraseña" placeholder="Verifique la contraseña">
+                        <p id="errorContrasena2" >Las contraseñas no coinciden</p>
+                        </div>
+                        <br>
+                        <p><input type="checkbox" name="tratamiento de datos" id="checkbox"> Aceptas los terminos y condiciones de <a href="" style="text-decoration: none;"> tratamiento de datos</a></p>
+                        <br>
+                        <button class="btn-entrar">Registrarme</button>
+                        <br>
+                        <a class="enlace" href="Login.html"><span>Login</span></a>    
+                    
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>

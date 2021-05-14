@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Página beta 1.0</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,700i|Open+Sans:400,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab+Highlight:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- menu-->
+
+    <nav class="menu">
+
+        <button class="menu-button" onclick="accion()"><img src="img\icons\icon-menu.png"></button>
+        <a class="menu_a desaparece" onclick="accion()" href="#">login</a>
+        <a class="menu_a desaparece" onclick="accion()" href="register.html">register</a>
+    </nav>
+    <img class="imga2" src="img\Logo-protech.png" alt="">
+
+    <!--registro de usuario-->
+    <main class="container">
+        <div class="row nosotros justify-content-center ">
+            <div class="col-12 text-center"></div>
+            <div class="login">
+                <form action="" id="FormularioLogIn">
+                    <h2>Iniciar sesión</h2>
+                    <input class="lg" type="email" name="correo" placeholder="Correo electrónico">
+                    <p id="errorCorreo">Ingrese un correo electrónico válido</p>
+                    <input class="lg" name="contraseñaLogIn" type="password" placeholder="Contraseña">
+                    <br>
+                    <button class="btn-entrar">Entrar</button>
+                    <br>
+                    <a class="enlace" href="register.html"><span>¿Quieres registrarte?</span></a>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
