@@ -13,4 +13,7 @@ module.exports = app => {
         res.render('../views/productos.ejs');
     });
 
+    app.get('/aggProductos',(req,res)=>{
+        res.render('../views/aggProductos');
+    });
 }
