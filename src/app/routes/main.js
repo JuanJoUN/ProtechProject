@@ -16,4 +16,8 @@ module.exports = app => {
     app.get('/aggProductos',(req,res)=>{
         res.render('../views/aggProductos');
     });
+
+    app.get('/usuarios',(req,res)=>{
+        res.render('../views/usuarios');
+    });
 }

@@ -10,7 +10,7 @@
   h1
     font-size: 4rem
 
-  #btnAggProduct
+  .btnAggProduct
     padding: 1.1rem
     margin-left: 2rem
 
@@ -44,6 +44,13 @@
   border-radius: 15px
   border-color: black
   border-style: solid
+  overflow: auto
+
+.ProdList::-webkit-scrollbar-thumb
+  border-radius: 20px
+
+.ProdList::-webkit-scrollbar:horizontal
+  display: none
 
 #aggProd
   flex-direction: row
