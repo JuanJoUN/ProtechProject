@@ -1,4 +1,5 @@
 const app = require('./config/server');
+const connection = require('./config/db')
 
 require('./app/routes/main')(app);
 
