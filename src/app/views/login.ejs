@@ -5,42 +5,60 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Protech</title>
     <link rel="stylesheet" href="/resources/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <body class="login">
-<div class="content">
-    <nav>
-        <img src="/resources/imgs/Logo-protech.png" alt="">
-    </nav>
-    <div class="form-content">
-        <div id="container">
-            <div class="logo-login">
-                <img src="/resources/imgs/Logo-protech.png" alt="">
-            </div>
-            <div class="login-form-add">
-                <section id="login-form">
-                    <header>Ingreso</header>
-                    <form>
-                        <div>
-                            <label for="usuario">Usuario:</label>
-                            <input id="usuario" type="text">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="nav-cont">
+        <a href="./productos" class="navbar-brand">
+            <img src="resources/imgs/Protech-logo-white.png" alt="Protech">
+        </a>
+    </div>
+</nav>
+<div class="container">
+    <div class="row justify-content-center mt-5 ">
+        <div class="col-lg-4 col-md-8 col-sm-8">
+            <div class="card shadow">
+                <div class="card-title text-center border-bottom">
+                    <h2 class="p-3">Login</h2>
+                </div>
+                <div class="card-body">
+                    <form action="loginAuth" method="POST">
+                        <div class="mb-4">
+                            <label for="usuario">Usuario</label>
+                            <input type="text" class="form-control" name="usuario">
                         </div>
-                        <div>
-                            <label for="pass-log">Contraseña:</label>
-                            <input id="pass-log" type="password">
+                        <div class="mb-4">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control" name="password">
                         </div>
-                        <div>
-                            <a href="passwordRecup.html">¿Olvidaste tu contraseña?</a>
-                        </div>
-                        <div>
-                            <input id="btnIngresar" type="submit" value="Ingresar">
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                         </div>
                     </form>
-                </section>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<% if(typeof alert != 'undefined') {%>
+    <script>
+        Swal.fire({
+            title: '<%= alertTitle%>',
+            text: '<%= alertMessage%>',
+            icon: '<%= alertIcon%>',
+            showConfirmButton: '<%= showConfirmButton%>',
+            timer: '<%= timer%>'
+        }).then(()=>{
+            window.location='/<%= ruta%>'
+        })
+    </script>
+<% } %>
 </body>
 </html>

@@ -5,63 +5,56 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../public/fontawesome-free-5.15.3-web">
-    <link rel="stylesheet" href="../resources/css/styles.css">
+    <title>Protech</title>
+    <link rel="stylesheet" href="/resources/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <body class="register">
-<div class="content">
-    <nav>
-        <img src="/resources/imgs/Logo-protech.png" alt="Protech">
-    </nav>
-    <div class="form-content">
-        <section id="register-form">
-            <header>Registro</header>
-            <form action="/register" method="POST">
-                <div class="row">
-                    <label>Nombre:</label>
-                    <label>Apellido:</label>
-                </div>
-                <div class="row">
-                    <input name="nombre" type="text" placeholder="ej: Juan Manuel">
-                    <input name="apellido" type="text" placeholder="ej: Rojas Arteaga">
-                </div>
-                <div class="row">
-                    <label>Cargo:</label>
-                    <label>Teléfono:</label>
-                </div>
-                <div class="row">
-                    <select>
-                        <option>Técnico</option>
-                        <option>Administrativo</option>
-                    </select>
-                    <input name="telefono" type="text" placeholder="ej: 3106451515">
-                </div>
-                <div class="row">
-                    <label>Email:</label>
-                    <label>Usuario:</label>
-                </div>
-                <div class="row">
-                    <input type="text" placeholder="ej: example@protech.com">
-                    <input type="text" placeholder="ej: JoseAr">
-                </div>
-                <div class="row passwords">
-                    <label>Contraseña:</label>
-                    <input type="password" id="pass-user">
-                    <label>Verifique su contraseña:</label>
-                    <input type="password" id="pass-verif">
-                </div>
-                <div id="ingresar-div">
-                    <input type="submit" value="Registrarse" name="registrarse">
-                </div>
-
-            </form>
-        </section>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="nav-cont">
+        <a href="/" class="navbar-brand">
+            <img src="resources/imgs/Protech-logo-white.png" alt="Protech">
+        </a>
     </div>
+</nav>
 
-
+<div class="container">
+    <div class="row justify-content-center mt-5 ">
+        <div class="col-lg-4 col-md-8 col-sm-8">
+            <div class="card shadow">
+                <div class="card-title text-center border-bottom">
+                    <h2 class="p-3">Registrar usuario</h2>
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <div class="mb-4">
+                            <label for="empName">Nombre de Empleado</label>
+                            <input type="text" class="form-control" name="empName">
+                        </div>
+                        <div class="mb-4">
+                            <label for="empRol">Cargo</label>
+                            <select name="empRol" class="form-select">
+                                <option value="TECNICO">Técnico</option>
+                                <option value="ADMINISTRATIVO">Administrativo</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="userName">Nombre de Usuario</label>
+                            <input type="text" class="form-control" name="userName">
+                        </div>
+                        <div class="mb-4">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Crear usuario</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 </body>
 </html>
