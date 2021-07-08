@@ -27,7 +27,7 @@
                     <h2 class="p-3">Registrar usuario</h2>
                 </div>
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="/register" method="POST">
                         <div class="mb-4">
                             <label for="empName">Nombre de Empleado</label>
                             <input type="text" class="form-control" name="empName">
@@ -56,5 +56,21 @@
         </div>
     </div>
 </div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<% if(typeof alert != 'undefined') {%>
+    <script>
+        Swal.fire({
+            title: '<%= alertTitle%>',
+            text: '<%= alertMessage%>',
+            icon: '<%= alertIcon%>',
+            showConfirmButton: '<%= showConfirmButton%>',
+            timer: '<%= timer%>'
+        }).then(()=>{
+            window.location='/<%= ruta%>'
+        })
+    </script>
+<% } %>
 </body>
 </html>

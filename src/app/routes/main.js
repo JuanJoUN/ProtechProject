@@ -1,5 +1,5 @@
  const app = require("../../config/server");
-
+const connection = require("../../config/db");
 module.exports = app => {
     app.get('/register', (req, res)=>{
         res.render('../views/register');
@@ -23,6 +23,31 @@ module.exports = app => {
         }
     });
 
+    app.post('/register',(req,res)=>{
+        const {empName, empRol, userName, password} = req.body;
+        connection.query('INSERT INTO usuario SET ?',{
+            usuario: userName,
+            nombre_empleado:empName,
+            cargo: empRol,
+            contrasena: password
+        },(error,result)=>{
+            if (error){
+                res.send(error);
+            }else{
+                res.render("../views/register",{
+                    alert: true,
+                    alertTitle: "Registro",
+                    alertMessage: "Registro exitoso",
+                    alertIcon: "success",
+                    showConfirmButton: true,
+                    timer: 1500,
+                    ruta: 'usuarios'
+                })
+            }
+        });
+
+    })
+
     app.get('/login', (req, res)=>{
         res.render('../views/login');
     });
@@ -36,7 +61,16 @@ module.exports = app => {
     });
 
     app.get('/usuarios',(req,res)=>{
-        res.render('../views/usuarios');
+        connection.query('SELECT * FROM usuario', (error,result)=>{
+            if(error){
+                res.send(error);
+            }else{
+                res.render('../views/usuarios',{
+                    users: result
+                });
+            }
+        })
+
     });
 
     app.post('/loginAuth', async (req,res)=>{
@@ -45,7 +79,7 @@ module.exports = app => {
             console.log(usuario,password)
             connection.query('SELECT * FROM usuario WHERE usuario = ?', [usuario], async(error, results)=>{
 
-                if (results.length ===0 || !(password===results[0].contraseña)){
+                if (results.length ===0 || !(password===results[0].contrasena)){
                     res.render('../views/login.ejs',{
                         alert: true,
                         alertTitle: "Error",

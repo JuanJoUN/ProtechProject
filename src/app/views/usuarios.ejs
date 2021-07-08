@@ -11,7 +11,7 @@
 <body class="users">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="nav-cont">
-        <a href="./productos" class="navbar-brand">
+        <a href="/" class="navbar-brand">
             <img src="resources/imgs/Protech-logo-white.png" alt="Protech">
         </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -34,7 +34,7 @@
         </div>
         <div class="btnAggProduct">
             <button>
-                <a href="">Añadir usuario</a>
+                <a href="/register">Añadir usuario</a>
             </button>
         </div>
     </div>
@@ -42,31 +42,17 @@
         <tr>
             <th>ID</th>
             <th>Nombre</th>
-            <th>Apellido</th>
             <th>Cargo</th>
             <th>Usuario</th>
         </tr>
+        <% for (let i = 0; i<users.length; i++) { %>
         <tr>
-            <td>1</td>
-            <td>Juan José</td>
-            <td>Salazar</td>
-            <td>Empleado</td>
-            <td>JUsal</td>
+            <td><%= users[i].usuarioId %></td>
+            <td><%= users[i].nombre_empleado%></td>
+            <td><%= users[i].cargo %></td>
+            <td><%= users[i].usuario %></td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Juan </td>
-            <td>Cardona</td>
-            <td>Empleado</td>
-            <td>JUcard</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>José</td>
-            <td>Salas</td>
-            <td>Empleado</td>
-            <td>JsAlas</td>
-        </tr>
+        <% }%>
     </table>
 </div>
 </body>

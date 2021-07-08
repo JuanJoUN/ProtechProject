@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="/resources/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+          crossorigin="anonymous">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -32,9 +35,8 @@
 
 <div class="contenedor1" id="aggProd">
     <div id="prodImg">
-        <div>
-            <img src="resources/imgs/imgpredet.png" alt="Imagen predeterminada">
-        </div>
+        <i class="fas fa-cart-plus"></i>
+
     </div>
     <div id="aggProd-form">
         <form class="row g-3">
@@ -50,18 +52,23 @@
                 <label for="descProd" class="form-label">Descripción</label>
                 <textarea class="form-control" id="descProd" rows="3"></textarea>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 mb-3">
                 <label for="stockProd" class="form-label">Stock</label>
                 <input type="number" class="form-control" id="stockProd">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 mb-3">
                 <label for="precioProd" class="form-label">Precio</label>
                 <input type="number" class="form-control" id="precioProd">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 mb-3">
                 <label for="costoProd" class="form-label">Costo</label>
                 <input type="number" class="form-control" id="costoProd">
             </div>
+            <div class="col-md-10 mb-2">
+                <label for="prodImage" class="form-label">Seleccione una imagen</label>
+                <input class="form-control" type="file" accept="image/jpeg, image/png" name="prodImage">
+            </div>
+            <div class="col-md-2"></div>
             <div class="col-2">
                 <button type="submit" class="btn btn-primary">Crear</button>
             </div>
