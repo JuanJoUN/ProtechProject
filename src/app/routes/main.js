@@ -60,6 +60,23 @@ module.exports = app => {
         res.render('../views/aggProductos');
     });
 
+    app.get('/deleteUser/:usuarioId', (req,res)=>{
+        const  userId = req.params.usuarioId;
+        connection.query('DELETE FROM usuario WHERE usuarioId=?',[userId],(error,results)=>{
+            if (error){
+                res.send(error);
+            }else{
+                connection.query("SELECT * FROM usuario", (err, result) => {
+                    if(err){
+                        res.send(err);
+                    } else {
+                        res.redirect('/usuarios')
+                    }
+                })
+            }
+        })
+    })
+
     app.get('/usuarios',(req,res)=>{
         connection.query('SELECT * FROM usuario', (error,result)=>{
             if(error){
