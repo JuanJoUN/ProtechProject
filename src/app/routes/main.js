@@ -77,6 +77,18 @@ module.exports = app => {
         })
     })
 
+    app.post('/editUser/:usuarioId', (req, res)=>{
+        const userId = req.params.usuarioId;
+        const {empNameUpd, empRolUpd, userNameUpd} = req.body;
+        connection.query('UPDATE usuario SET usuario = ?, nombre_empleado = ?, cargo = ? WHERE usuarioId = ?', [userNameUpd, empNameUpd, empRolUpd, userId], (error, result)=>{
+            if (error){
+                res.send(error);
+            }else{
+                res.redirect('/usuarios')
+            }
+        });
+    })
+
     app.get('/usuarios',(req,res)=>{
         connection.query('SELECT * FROM usuario', (error,result)=>{
             if(error){
