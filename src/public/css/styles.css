@@ -1,0 +1,238 @@
+* {
+  box-sizing: border-box;
+  font-family: Bahnschrift, sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+}
+
+nav {
+  width: 100%;
+  height: 10%;
+  background-color: #484ec4;
+  font-size: 1.3rem;
+}
+
+nav img {
+  height: 80px;
+}
+
+.nav-cont {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  margin-left: 2em;
+  width: 95%;
+}
+
+.form-search {
+  display: flex;
+  margin-left: auto;
+}
+
+.form-content {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor1 {
+  height: 90%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#prodImg i {
+  font-size: 10rem;
+}
+
+.register .container {
+  margin-top: 7%;
+}
+
+.login {
+  background-image: url("../imgs/camarabg.jpg");
+}
+.login .container {
+  margin-top: 10%;
+}
+.login #container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 83em;
+}
+.login #login-form {
+  background: #d9d9d9;
+  border-radius: 15px;
+  padding: 25px 30px;
+  box-shadow: 0 2px 12px 4px rgba(0, 0, 0, 0.55);
+}
+.login #login-form header {
+  text-align: center;
+  font-size: 1.8em;
+  margin-bottom: 0.6em;
+}
+.login form > div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12%;
+}
+.login .logo-login {
+  width: 48em;
+  margin-right: 2em;
+  margin-bottom: 7em;
+}
+.login .logo-login img {
+  width: 100%;
+}
+.login .login-form-add,
+.login .logo-login {
+  display: inline-block;
+}
+.login .login-form-add input {
+  font-size: 1em;
+  padding: 0.5em;
+}
+.login #usuario, .login #pass-log {
+  margin-top: 0.5em;
+  width: 330px;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+  border-color: transparent;
+}
+.login #usuario:focus, .login #pass-log:focus {
+  border-color: cornflowerblue;
+}
+.login #btnIngresar {
+  border-radius: 5px;
+  outline: none;
+  border-color: transparent;
+  cursor: pointer;
+  font-size: 1.2em;
+  width: 35%;
+}
+.login form > div:last-child {
+  align-items: center;
+}
+
+.ProdTitle {
+  width: 80%;
+  height: 10%;
+  padding-top: 1%;
+  padding-left: 3%;
+  margin-top: 3%;
+  margin-bottom: 2%;
+  display: flex;
+}
+.ProdTitle h1 {
+  font-size: 4rem;
+}
+.ProdTitle .btnAggProduct {
+  padding: 1.1rem;
+  margin-left: 2rem;
+}
+.ProdTitle .btnAggProduct button {
+  background: transparent;
+  outline: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border-color: black;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.ProdTitle .btnAggProduct button > a {
+  text-decoration: none;
+  color: black;
+  padding: 0.9rem;
+}
+.ProdTitle .btnAggProduct button:hover {
+  background: #198754;
+  border-color: transparent;
+  color: white;
+  outline: none;
+}
+.ProdTitle .btnAggProduct button:hover a {
+  color: white;
+}
+
+.ProdList {
+  display: inline-block;
+  width: 80%;
+  height: 70%;
+  border-radius: 15px;
+  border-color: black;
+  border-style: solid;
+  overflow: auto;
+}
+
+.ProdList::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+}
+
+.ProdList::-webkit-scrollbar:horizontal {
+  display: none;
+}
+
+#aggProd {
+  flex-direction: row;
+  justify-content: center;
+}
+
+#aggProd-form {
+  padding: 3%;
+  margin-left: 4%;
+  background: rgba(6, 194, 124, 0.64);
+  border-radius: 20px;
+  width: 30%;
+}
+
+#prodImg {
+  background: transparent;
+  width: 21%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  border-style: dashed;
+}
+#prodImg img {
+  width: 50%;
+  border-radius: 10px;
+}
+#prodImg div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
+}
+
+.users table {
+  width: 80%;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.users .card-body {
+  padding: 14%;
+}
+.users .modal-dialog {
+  margin-top: 10%;
+}
+
+/*# sourceMappingURL=styles.css.map */
