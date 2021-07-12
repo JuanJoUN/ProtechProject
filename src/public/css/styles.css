@@ -170,13 +170,59 @@ nav img {
 }
 
 .ProdList {
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
   width: 80%;
   height: 70%;
   border-radius: 15px;
   border-color: black;
   border-style: solid;
   overflow: auto;
+  overflow-x: hidden;
+}
+.ProdList .Item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+  border-radius: 15px;
+  border: solid rgba(0, 0, 0, 0.4);
+  width: 15%;
+  height: 37%;
+  position: relative;
+}
+.ProdList .Item .eliminarProducto {
+  position: absolute;
+  bottom: 10%;
+  right: 13%;
+  font-size: medium;
+}
+.ProdList .Item .editarProducto {
+  position: absolute;
+  bottom: 25%;
+  right: 11%;
+  font-size: medium;
+}
+.ProdList .Item p {
+  margin: 0;
+}
+.ProdList .Item img {
+  width: 177px;
+  margin: 1.2rem;
+}
+.ProdList .Item .itemInfo {
+  width: 100%;
+  padding-left: 10%;
+  margin-bottom: 1rem;
+}
+.ProdList .Item .itemInfo .disponible {
+  color: green;
+  margin: 0;
+}
+.ProdList .Item .itemInfo .noDisponible {
+  color: red;
+  margin: 0;
 }
 
 .ProdList::-webkit-scrollbar-thumb {

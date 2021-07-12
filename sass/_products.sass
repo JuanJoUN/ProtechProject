@@ -38,13 +38,61 @@
       color: white
 
 .ProdList
-  display: inline-block
+  display: flex
+  flex-wrap: wrap
+
   width: 80%
   height: 70%
   border-radius: 15px
   border-color: black
   border-style: solid
   overflow: auto
+  overflow-x: hidden
+
+  .Item
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    margin: 2%
+    border-radius: 15px
+    border: solid rgba(0, 0, 0, 0.4)
+    width: 15%
+    height: 37%
+    position: relative
+
+    .eliminarProducto
+      position: absolute
+      bottom: 10%
+      right: 13%
+      font-size: medium
+
+    .editarProducto
+      position: absolute
+      bottom: 25%
+      right: 11%
+      font-size: medium
+
+    p
+      margin: 0
+
+    img
+      width: 177px
+      margin: 1.2rem
+
+    .itemInfo
+      width: 100%
+      padding-left: 10%
+      margin-bottom: 1rem
+
+      .disponible
+        color: green
+        margin: 0
+      .noDisponible
+        color: red
+        margin: 0
+
+
 
 .ProdList::-webkit-scrollbar-thumb
   border-radius: 20px

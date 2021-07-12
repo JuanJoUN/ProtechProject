@@ -40,30 +40,30 @@
 
     </div>
     <div id="aggProd-form">
-        <form class="row g-3">
+        <form class="row g-3" action="/aggProducto" method="POST">
             <div class="col-md-6">
                 <label for="codProd" class="form-label">Código</label>
-                <input type="text" class="form-control" id="codProd">
+                <input type="text" class="form-control" name="codProd">
             </div>
             <div class="col-md-6">
                 <label for="nomProd" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nomProd">
+                <input type="text" class="form-control" name="nomProd">
             </div>
             <div class="mb-3">
                 <label for="descProd" class="form-label">Descripción</label>
-                <textarea class="form-control" id="descProd" rows="3"></textarea>
+                <textarea class="form-control" name="descProd" rows="3"></textarea>
             </div>
             <div class="col-md-4 mb-3">
                 <label for="stockProd" class="form-label">Stock</label>
-                <input type="number" class="form-control" id="stockProd">
+                <input type="number" class="form-control" name="stockProd">
             </div>
             <div class="col-md-4 mb-3">
                 <label for="precioProd" class="form-label">Precio</label>
-                <input type="number" class="form-control" id="precioProd">
+                <input type="number" class="form-control" name="precioProd">
             </div>
             <div class="col-md-4 mb-3">
                 <label for="costoProd" class="form-label">Costo</label>
-                <input type="number" class="form-control" id="costoProd">
+                <input type="number" class="form-control" name="costoProd">
             </div>
             <div class="col-md-10 mb-2">
                 <label for="prodImage" class="form-label">Seleccione una imagen</label>

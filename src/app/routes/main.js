@@ -53,7 +53,16 @@ module.exports = app => {
     });
 
     app.get('/productos', (req, res)=>{
-        res.render('../views/productos.ejs');
+        connection.query('SELECT * FROM producto', (error, result)=>{
+            if (error){
+                res.send(error)
+            }else{
+                res.render('../views/productos.ejs', {
+                    producto: result
+                });
+            }
+        })
+
     });
 
     app.get('/aggProductos',(req,res)=>{
@@ -73,6 +82,26 @@ module.exports = app => {
                         res.redirect('/usuarios')
                     }
                 })
+            }
+        })
+    })
+
+    app.post('/aggProducto',(req,res)=>{
+        const {codProd, nomProd, descProd, stockProd, precioProd, costoProd, prodImage} = req.body;
+        console.log(req.body)
+        connection.query('INSERT INTO producto SET ?',{
+            codigoProducto: codProd,
+            imagen: prodImage,
+            nombre_producto: nomProd,
+            descripción: descProd,
+            stock: stockProd,
+            precio: precioProd,
+            costo: costoProd
+        }, (error, result)=>{
+            if (error){
+                res.send(error);
+            }else{
+                res.redirect('/productos')
             }
         })
     })
