@@ -60,9 +60,9 @@
                         <%}else {%>
                             <p class="noDisponible">No disponible</p>
                         <%}%>
-                        <p>Precio: <%= producto[i].precio %></p>
+                        <p>Precio: $<%= producto[i].precio %></p>
                     </div>
-                    <a href="" class="eliminarProducto">
+                    <a href="/deleteProduct/<%= producto[i].codigoProducto %>" class="eliminarProducto">
                         <i class="far fa-trash-alt"></i>
                     </a>
                     <a href="" class="editarProducto">

@@ -53,7 +53,7 @@ module.exports = app => {
     });
 
     app.get('/productos', (req, res)=>{
-        connection.query('SELECT * FROM producto', (error, result)=>{
+        connection.query('SELECT * FROM producto ORDER BY nombre_producto', (error, result)=>{
             if (error){
                 res.send(error)
             }else{
@@ -68,6 +68,23 @@ module.exports = app => {
     app.get('/aggProductos',(req,res)=>{
         res.render('../views/aggProductos');
     });
+
+    app.get('/deleteProduct/:codigoProducto', (req,res)=>{
+        const prodId = req.params.codigoProducto;
+        connection.query('DELETE FROM producto WHERE codigoProducto = ?',[prodId],(error,results)=>{
+            if (error){
+                res.send(error);
+            }else{
+                connection.query('SELECT * FROM producto ORDER BY nombre_producto', (error, result)=>{
+                    if (error){
+                        res.send(error);
+                    }else{
+                        res.redirect('/productos')
+                    }
+                })
+            }
+        })
+    })
 
     app.get('/deleteUser/:usuarioId', (req,res)=>{
         const  userId = req.params.usuarioId;
