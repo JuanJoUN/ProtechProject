@@ -180,6 +180,9 @@ nav img {
   overflow: auto;
   overflow-x: hidden;
 }
+.ProdList .modal-dialog {
+  margin-top: 5%;
+}
 .ProdList .Item {
   display: flex;
   flex-direction: column;

@@ -135,6 +135,18 @@ module.exports = app => {
         });
     })
 
+    app.post('/editProduct/:codigoProducto', (req, res)=>{
+        const prodId = req.params.codigoProducto;
+        const {codProdUpd, nomProdUpd, descProdUpd, stockProdUpd, precioProdUpd, costoProdUpd, prodImageUpd} = req.body;
+        connection.query('UPDATE producto SET codigoProducto = ?,imagen = ?, nombre_producto = ?, descripción = ?, stock = ?, precio = ?, costo = ?  WHERE codigoProducto = ?', [codProdUpd, prodImageUpd, nomProdUpd, descProdUpd, stockProdUpd,precioProdUpd, costoProdUpd, prodId], (error, result)=>{
+            if (error){
+                res.send(error);
+            }else{
+                res.redirect('/productos')
+            }
+        });
+    })
+
     app.get('/usuarios',(req,res)=>{
         connection.query('SELECT * FROM usuario', (error,result)=>{
             if(error){
@@ -152,7 +164,7 @@ module.exports = app => {
         const {usuario,password} = req.body;
         if (usuario && password){
             console.log(usuario,password)
-            connection.query('SELECT * FROM usuario WHERE usuario = ?', [usuario], async(error, results)=>{
+                connection.query('SELECT * FROM usuario WHERE usuario = ?', [usuario], async(error, results)=>{
 
                 if (results.length ===0 || !(password===results[0].contrasena)){
                     res.render('../views/login.ejs',{

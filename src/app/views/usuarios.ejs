@@ -92,7 +92,7 @@
                                             <div class="mb-4">
                                                 <label for="empRolUpd">Cargo</label>
                                                 <select name="empRolUpd" class="form-select">
-                                                    <% if(users[i].cargo == "TECNICO") {%>
+                                                    <% if(users[i].cargo === "TECNICO") {%>
                                                         <option value="TECNICO" selected>Técnico</option>
                                                         <option value="ADMINISTRATIVO">Administrativo</option>
                                                     <%}else{%>
