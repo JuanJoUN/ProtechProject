@@ -13,7 +13,7 @@ module.exports = app => {
                     res.send(error);
                 }else{
                     res.render('../views/productos.ejs',{
-                        product: results
+                        producto: results
                     })
                 }
             })
@@ -22,6 +22,12 @@ module.exports = app => {
             res.render('../views/login');
         }
     });
+
+    app.get('/logout', (req,res)=>{
+        req.session.destroy(()=>{
+            res.redirect('/')
+        })
+    })
 
     app.post('/register',(req,res)=>{
         const {empName, empRol, userName, password} = req.body;
