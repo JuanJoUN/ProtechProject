@@ -8,7 +8,7 @@ module.exports = app => {
     app.get('/', (req, res)=>{
 
         if (req.session.loggedin){
-            connection.query('SELECT * FROM producto',(error, results)=>{
+            connection.query('SELECT * FROM producto ORDER BY nombre_producto',(error, results)=>{
                 if(error){
                     res.send(error);
                 }else{
