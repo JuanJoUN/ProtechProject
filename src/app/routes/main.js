@@ -1,6 +1,21 @@
  const app = require("../../config/server");
 const connection = require("../../config/db");
 module.exports = app => {
+
+    // connection.query('SELECT codigoProducto FROM producto ',(error, results)=>{
+    //     // console.log(results)
+    //     let string = JSON.stringify(results)
+    //     // console.log(string)
+    //     let json = JSON.parse(string)
+    //     let dictIDs = {};
+    //     for (let i = 0; i<results.length ; i++){
+    //         dictIDs[json[i].codigoProducto] = 0;
+    //     }
+    //     console.log(dictIDs[15455])
+    //
+    // })
+
+
     app.get('/register', (req, res)=>{
         if (req.session.role === "ADMINISTRATIVO"){
             res.render('../views/register');
@@ -94,7 +109,7 @@ module.exports = app => {
                     if (error){
                         res.send(error);
                     }else{
-                        res.redirect('/productos')
+                        res.redirect('/')
                     }
                 })
             }
