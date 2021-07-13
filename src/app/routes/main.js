@@ -2,7 +2,11 @@
 const connection = require("../../config/db");
 module.exports = app => {
     app.get('/register', (req, res)=>{
-        res.render('../views/register');
+        if (req.session.role === "ADMINISTRATIVO"){
+            res.render('../views/register');
+        }else{
+            res.status(404).send("Ooops no tienes permisos para ingresar aquí");
+        }
     });
 
     app.get('/', (req, res)=>{
@@ -13,7 +17,8 @@ module.exports = app => {
                     res.send(error);
                 }else{
                     res.render('../views/productos.ejs',{
-                        producto: results
+                        producto: results,
+                        rol: req.session.role
                     })
                 }
             })
@@ -72,7 +77,11 @@ module.exports = app => {
     });
 
     app.get('/aggProductos',(req,res)=>{
-        res.render('../views/aggProductos');
+        if (req.session.role === "ADMINISTRATIVO"){
+            res.render('../views/aggProductos');
+        }else{
+            res.status(404).send("Ooops no tienes permisos para ingresar aquí");
+        }
     });
 
     app.get('/deleteProduct/:codigoProducto', (req,res)=>{
@@ -109,6 +118,7 @@ module.exports = app => {
         })
     })
 
+
     app.post('/aggProducto',(req,res)=>{
         const {codProd, nomProd, descProd, stockProd, precioProd, costoProd, prodImage} = req.body;
         console.log(req.body)
@@ -124,7 +134,7 @@ module.exports = app => {
             if (error){
                 res.send(error);
             }else{
-                res.redirect('/productos')
+                res.redirect('/')
             }
         })
     })
@@ -148,21 +158,26 @@ module.exports = app => {
             if (error){
                 res.send(error);
             }else{
-                res.redirect('/productos')
+                res.redirect('/')
             }
         });
     })
 
     app.get('/usuarios',(req,res)=>{
-        connection.query('SELECT * FROM usuario', (error,result)=>{
-            if(error){
-                res.send(error);
-            }else{
-                res.render('../views/usuarios',{
-                    users: result
-                });
-            }
-        })
+        if (req.session.role === "ADMINISTRATIVO"){
+            connection.query('SELECT * FROM usuario ORDER BY cargo', (error,result)=>{
+                if(error){
+                    res.send(error);
+                }else{
+                    res.render('../views/usuarios',{
+                        users: result
+                    });
+                }
+            })
+        }else{
+            res.status(404).send("Ooops no tienes permisos para ingresar aquí");
+        }
+
 
     });
 
@@ -171,7 +186,7 @@ module.exports = app => {
         if (usuario && password){
             console.log(usuario,password)
                 connection.query('SELECT * FROM usuario WHERE usuario = ?', [usuario], async(error, results)=>{
-
+                console.log(results[0].cargo)
                 if (results.length ===0 || !(password===results[0].contrasena)){
                     res.render('../views/login.ejs',{
                         alert: true,
@@ -184,6 +199,7 @@ module.exports = app => {
                     })
                 }else{
                     req.session.loggedin=true;
+                    req.session.role = results[0].cargo;
                     req.session.name = results[0].nombreUsuario;
                     res.render('../views/login.ejs', {
                         alert: true,

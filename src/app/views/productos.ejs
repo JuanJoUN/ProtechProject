@@ -18,16 +18,18 @@
 <body >
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="nav-cont">
-            <a href="./productos" class="navbar-brand">
+            <a href="./" class="navbar-brand">
                 <img src="resources/imgs/Protech-logo-white.png" alt="Protech">
             </a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <% if (rol ==="ADMINISTRATIVO") {%>
                 <li class="nav-item">
                     <a href="/" class="nav-link">Estadísticas</a>
                 </li>
                 <li class="nav-item">
                     <a href="/usuarios" class="nav-link">Usuarios</a>
                 </li>
+                <%}%>
             </ul>
             <form class="form-search">
                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar producto" aria-label="Search">
@@ -45,11 +47,13 @@
             <div>
                 <h1>Productos</h1>
             </div>
+            <% if (rol ==="ADMINISTRATIVO"){%>
             <div class="btnAggProduct">
                 <button>
                     <a href="/aggProductos">Añadir producto</a>
                 </button>
             </div>
+            <%}%>
 
         </div>
         <div class="ProdList">
@@ -65,6 +69,7 @@
                         <%}%>
                         <p>Precio: $<%= producto[i].precio %></p>
                     </div>
+                    <% if (rol === "ADMINISTRATIVO") {%>
                     <a href="/deleteProduct/<%= producto[i].codigoProducto %>" class="eliminarProducto">
                         <i class="far fa-trash-alt"></i>
                     </a>
@@ -72,6 +77,7 @@
                        data-bs-target="#editProduct<%= producto[i].codigoProducto %>">
                         <i class="fas fa-edit"></i>
                     </a>
+                    <%}%>
                 </div>
                 <div class=" modal fade modal-dialog-scrollable" id="editProduct<%= producto[i].codigoProducto %>" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
