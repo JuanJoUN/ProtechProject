@@ -57,7 +57,7 @@
                 <div class="Item">
                     <img src="/resources/imgs/imgpredet.jpg" alt="Item">
                     <div class="itemInfo">
-                        <p><%= producto[i].nombre_producto %></p>
+                        <a class="linkNomProd" href="/infoProduct/<%=producto[i].codigoProducto%>" data-bs-toggle="modal" data-bs-target="#infoProduct<%= producto[i].codigoProducto %>"><%= producto[i].nombre_producto %></a>
                         <% if(producto[i].stock>0) {%>
                             <p class="disponible">Disponible</p>
                         <%}else {%>
@@ -120,6 +120,58 @@
                                                         <button type="submit" class="btn btn-success">Actualizar</button>
                                                     </div>
                                                 </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" modal fade modal-dialog-scrollable" id="infoProduct<%= producto[i].codigoProducto %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="row justify-content-center ">
+                                    <div class="col-12">
+                                        <div class="card shadow">
+                                            <div class="card-body">
+                                                <div class="card-title text-center border-bottom">
+                                                    <h2>Información del producto</h2>
+                                                </div>
+                                                <div class="row g-3">
+                                                    <div class="mb-4 col-md-4">
+                                                        <label class="form-label" for="nomProdUpd">Código</label>
+                                                        <input type="text" class="form-control" name="codProdUpd"
+                                                               value="<%= producto[i].codigoProducto %>" disabled>
+                                                    </div>
+                                                    <div class="mb-4 col-md-8">
+                                                        <label class="form-label" for="nomProdUpd">Nombre del producto</label>
+                                                        <input type="text" class="form-control" name="nomProdUpd"
+                                                               value="<%= producto[i].nombre_producto %>" disabled>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="descProdUpd">Descripción</label>
+                                                        <textarea name="descProdUpd" cols="50" rows="3" disabled><%= producto[i].descripción %></textarea>
+                                                    </div>
+                                                    <div class="mb-3 col-md-4">
+                                                        <label class="form-label" for="stockProdUpd">Stock</label>
+                                                        <input type="text" class="form-control" name="stockProdUpd" value="<%= producto[i].stock %>" disabled>
+                                                    </div>
+                                                    <div class="mb-3 col-md-4">
+                                                        <label class="form-label" for="precioProdUpd">Precio</label>
+                                                        <input type="text" class="form-control" name="precioProdUpd" value="<%= producto[i].precio %>" disabled>
+                                                    </div>
+                                                    <div class="mb-3 col-md-4">
+                                                        <label class="form-label" for="costoProdUpd">Costo</label>
+                                                        <input type="text" class="form-control" name="costoProdUpd" value="<%= producto[i].costo %>" disabled>
+                                                    </div>
+                                                    <div class="mb-2 col-md-10">
+                                                        <label class="form-label" for="prodImageUpd">Seleccione una imagen</label>
+                                                        <input class="form-control" type="file" accept="image/jpeg, image/png" name="prodImageUpd" value="<%= producto[i].imagen %>" disabled>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
