@@ -78,18 +78,6 @@ module.exports = app => {
         res.render('../views/login');
     });
 
-    app.get('/productos', (req, res)=>{
-        connection.query('SELECT * FROM producto ORDER BY nombre_producto', (error, result)=>{
-            if (error){
-                res.send(error)
-            }else{
-                res.render('../views/productos.ejs', {
-                    producto: result
-                });
-            }
-        })
-
-    });
 
     app.get('/aggProductos',(req,res)=>{
         if (req.session.role === "ADMINISTRATIVO"){
@@ -259,5 +247,5 @@ app.get('/RegistrarVentas', (req, res)=>{
                     res.redirect('/')
                 }
             })
-    
+
     });
