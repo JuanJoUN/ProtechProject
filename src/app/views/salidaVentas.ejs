@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Protech</title>
+    <link rel="icon" href="/resources/imgs/logo-white.ico">
+    <link rel="stylesheet" href="/resources/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+          crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="nav-cont">
+        <a href="./productos" class="navbar-brand">
+            <img src="resources/imgs/Protech-logo-white.png" alt="Protech">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            
+            <li class="nav-item">
+                <a href="/productos" class="nav-link">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link">Estadísticas</a>
+            </li>
+            <li class="nav-item">
+                <a href="/usuarios" class="nav-link">Usuarios</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+
+<div class="container">
+    <div class="row justify-content-center mt-5 ">
+        <div class="col-lg-8 col-md-10 col-sm-10">
+            <div class="card shadow">
+                <div class="card-title text-center border-bottom">
+                    <h2 class="p-3">Registrar venta</h2>
+                </div>
+                <div class="card-body">
+                    <form action="/registrarSalida" method="POST">
+
+                        <div id="duplicar">
+                        <div class="row">    
+                        <div class=" col-md-12 "  style="display: inline-flex; ">
+                            <div class="mb-4 col-md-6">
+                                <label for="">Elige El Producto</label>
+                                <select id="select-p" name="codigoProducto"  class="form-select" onchange="eventoChangeMax();">
+                                    <option>elige un producto</option>
+                                    <% for (let i = 0; i < producto.length; i++) { %>
+                                        <option data-stock="<%= producto[i].stock%>" value="<%= producto[i].codigoProducto%>" ><%= producto[i].nombre_producto%> (Disponible: <%= producto[i].stock%>)    </option>
+                                         <% } %>
+                                </select>
+                            </div>
+                                
+                            <div class="mb-4 col-md-3 " style=" margin-left: 5px;">
+                                <label for="">cantidad vendida </label>
+                                <input  type="number" class="form-control" name="cantidad" min="1" value="" id="cantidad" onclick="">
+                            </div>
+                          
+                           <div class="m4 col-md-2 " style="margin-top: 24px; margin-left: 20px;">
+                               <button class="btn btn-secondary" type="button">
+                                   +
+                               </button>
+                           </div>
+                           </div>
+                        </div>
+                    </div>
+
+                        
+                           
+                           
+                        <div class="mb-4">
+                            <label for="">Cédula cliente</label>
+                            <input type="text" class="form-control" name="cedula_cliente">
+                        </div>
+                        <div class="mb-4">
+                            <label for="">Fecha factura</label>
+                            <input type="date" class="form-control" name="fecha_venta">
+                        </div>
+                        <div class="mb-4">
+                            <label for="">Impuesto</label>
+                            <input type="text" class="form-control" name="impuesto">
+                        </div>
+                        <div class="mb-4">
+                            <label for="">Valor neto</label>
+                            <input type="text" class="form-control" name="valor_bruto">
+                        </div>
+                        <div class="mb-4">
+                            <label for="">Valor total</label>
+                            <input type="text" class="form-control" name="total">
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">agregar ventas</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/resources/js/cantidad.js"></script>
+<script src="/resources/js/duplicar.js"></script>
