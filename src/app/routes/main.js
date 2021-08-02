@@ -230,3 +230,34 @@ module.exports = app => {
         }
     });
 }
+app.get('/RegistrarVentas', (req, res)=>{
+        connection.query('SELECT * FROM producto ORDER BY nombre_producto', (error, result)=>{
+            if (error){
+                res.send(error)
+            }else{
+                res.render('../views/salidaVentas.ejs', {
+                    producto: result
+                });
+            }
+        })
+    });
+    app.post('/registrarSalida', (req, res) => {
+            const {codigoProducto, cantidad, impuesto, valor_bruto, total, fecha_venta, cedula_cliente} = req.body;
+            console.log(req.body)
+            connection.query('INSERT INTO detalle_factura SET ?',{
+                codigoProducto: [codigoProducto],
+                cantidad: [cantidad],
+                impuesto: impuesto,
+                valor_bruto: valor_bruto,
+                total: total,
+                fecha_venta: fecha_venta,
+                cedula_cliente: cedula_cliente
+              }, (error, result)=>{
+                if (error){
+                    res.send(error);
+                }else{
+                    res.redirect('/')
+                }
+            })
+    
+    });
