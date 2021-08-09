@@ -2,18 +2,7 @@
 const connection = require("../../config/db");
 module.exports = app => {
 
-    // connection.query('SELECT codigoProducto FROM producto ',(error, results)=>{
-    //     // console.log(results)
-    //     let string = JSON.stringify(results)
-    //     // console.log(string)
-    //     let json = JSON.parse(string)
-    //     let dictIDs = {};
-    //     for (let i = 0; i<results.length ; i++){
-    //         dictIDs[json[i].codigoProducto] = 0;
-    //     }
-    //     console.log(dictIDs[15455])
-    //
-    // })
+
 
 
     app.get('/register', (req, res)=>{
@@ -47,6 +36,14 @@ module.exports = app => {
         req.session.destroy(()=>{
             res.redirect('/')
         })
+    })
+
+    app.get('/aboutUs', (req,res)=>{
+        if (req.session.loggedin){
+            res.render('../views/aboutUs.ejs')
+        }else{
+            res.render('../views/login');
+        }
     })
 
     app.post('/register',(req,res)=>{

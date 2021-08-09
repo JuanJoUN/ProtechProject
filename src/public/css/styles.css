@@ -56,6 +56,43 @@ nav img {
   align-items: center;
 }
 
+.contenedorAlt {
+  height: 90%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.autors {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+}
+.autors img {
+  border-radius: 20px;
+}
+.autors p {
+  padding-left: 25%;
+  margin-top: 10px;
+}
+
+#aboutUsText {
+  width: 50%;
+}
+#aboutUsText h1 {
+  margin-top: 15%;
+  margin-bottom: 5%;
+}
+#aboutUsText p {
+  margin-bottom: 10%;
+}
+#aboutUsText h2 {
+  padding-left: 41%;
+  margin-bottom: 5%;
+}
+
 #prodImg i {
   font-size: 10rem;
 }
