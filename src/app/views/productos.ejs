@@ -34,9 +34,31 @@
                 </li>
                 <%}%>
             </ul>
-            <form class="form-search">
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar producto" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+             <form class="form-search">
+                <input  id="buscadorP"
+                        class=" flexdatalist form-control mr-sm-2" 
+                        type="text" 
+                        placeholder="Buscar producto" 
+                        aria-label="Search" 
+                        data-min-length="1" 
+                        list="productosList" 
+                        >
+
+                <button id="botonBuscarP" class="btn btn-outline-success my-2 my-sm-0" type="button" >Buscar</button>
+                <datalist id="productosList">
+                    <% for (let i = 0; i < producto.length; i++) { %>
+                        <option value="<%= producto[i].codigoProducto%>"><%= producto[i].nombre_producto%></option>
+                         <% } %>
+                </datalist>
+                <script>
+                    const buscadorInput = document.getElementById('buscadorP')
+                    const buscadorButton = document.getElementById('botonBuscarP')
+                    buscadorButton.addEventListener('click', ()=>{
+                        const idProduct =buscadorInput.value
+                        var modal = new bootstrap.Modal(document.getElementById('infoProduct'+ idProduct))
+                        modal.show()
+                    })
+                </script>
             </form>
             <a href="logout" class="btn btn-danger">Cerrar sesión</a>
 
