@@ -226,6 +226,103 @@ app.get('/RegistrarVentas', (req, res)=>{
             }
         })
     });
+const updateStock = ({ codigoProducto, cantidad }) => {
+    return new Promise((resolve, reject) => {
+        const QUERY_SELECT = 'SELECT * FROM producto WHERE codigoProducto = ?'
+
+        connection.query(QUERY_SELECT, [codigoProducto], (err, results, fields) => {
+            if (err) {
+                reject(err)
+            } else {
+                if (resolve.length > 0) {
+                    const producto = results[0]
+                    const newStock = producto.stock - cantidad
+                    if (newStock >= 0) {
+                        const QUERY_UPDATE = 'UPDATE producto SET stock = ? WHERE codigoProducto = ?'
+                        connection.query(QUERY_UPDATE, [newStock, codigoProducto], (err, results, fields) => {
+                            if (err) {
+                                reject(err)
+                            } else {
+                                resolve(results, fields)
+                            }
+                        })
+                    } else {
+                        const error = `
+                        No hay suficientes productos para ese pedido.
+                        Existen ${producto.stock} productos y pediste ${cantidad} productos.
+                        `
+                        reject({ error })
+                    }
+                    console.log(results, fields)
+                } else {
+                    reject({ error: 'El producto no existe!' })
+                }
+            }
+        })
+    });
+}
+const verifyClient = (datosCliente) => {
+    const { cedula_cliente } = datosCliente
+    return new Promise((resolve, reject) => {
+        const QUERY_SELECT = 'SELECT * FROM cliente WHERE cedula_cliente = ?'
+        connection.query(QUERY_SELECT, [cedula_cliente], (err, results, fields) => {
+            if (err) {
+                reject(err)
+            } else {
+                if (results.length > 0) {
+                    console.log('El usuario ya existe')
+                    resolve(results, fields)
+                } else {
+                    console.log(results, fields)
+                    const QUERY_CREATE = 'INSERT INTO cliente SET ?'
+                    connection.query(QUERY_CREATE, datosCliente, (err, results, fields) => {
+                        if (err) {
+                            reject(err)
+                        } else {
+                            resolve(results, fields)
+                        }
+                    })
+                }
+            }
+        })
+    })
+}
+
+app.post('/registrarSalida', async (req, res) => {
+    try {
+        const { productos, valorNeto, total, fechaFactura, cedula_cliente, nombre_cliente, direccion, numero_celular } = req.body;
+        console.log(req.body)
+        connection.query('INSERT INTO detalle_factura (codigoProducto, cantidad, valor_bruto, total) VALUES ?', [productos],
+            async (error, result) => {
+                if (error) {
+                    res.send(error);
+                } else {
+                    await verifyClient({ cedula_cliente, nombre_cliente, direccion, numero_celular })
+                    connection.query('INSERT INTO encabezado_factura SET ?', {
+                        cedula_cliente: cedula_cliente,
+                        valorNeto: valorNeto,
+                        fechaFactura: fechaFactura,
+                    }, async (error, result) => {
+                        if (error) {
+                            res.send(error);
+                        } else {
+                            const promiseUpdateProducts = productos.map(
+                                ([codigoProducto, cantidad]) =>
+                                    updateStock({ codigoProducto, cantidad })
+                            )
+                            await Promise.all(promiseUpdateProducts)
+                            console.log(result)
+                            res.json({ result, success:true });
+                        }
+                    })
+                }
+            });
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ error })
+    }
+}
+);
     app.post('/registrarSalida', (req, res) => {
             const {codigoProducto, cantidad, impuesto, valor_bruto, total, fecha_venta, cedula_cliente} = req.body;
             console.log(req.body)
