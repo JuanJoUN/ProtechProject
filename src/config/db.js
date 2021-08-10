@@ -16,15 +16,15 @@ const connection_BD = {
 };
 
 function handleDisconnect(connection_BD){
-    connectionn = mysql.createPool(connection_BD);
-    connectionn.getConnection(function (error){
+    connection = mysql.createPool(connection_BD);
+    connection.getConnection(function (error){
         if (error){
             console.log("Error while connecting to db: ", error);
             setTimeout(handleDisconnect, 2000);
         }
     });
 
-    connectionn.on('error', function (error){
+    connection.on('error', function (error){
         console.log('Database error', error);
         if (error.code === 'PROTOCOL_CONNECTION_LOST'){
             handleDisconnect();
