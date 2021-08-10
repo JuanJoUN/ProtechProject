@@ -13,6 +13,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
           crossorigin="anonymous">
+    <script id= "script" data-data= "<%= data %>">
+       const listeners=[]
+       const store= new Proxy(JSON.parse(document.getElementById("script").dataset.data),{
+            set(target, key, value){
+                target[key]=value
+                listeners.forEach(listener=>listener(target,key,value))
+            } 
+        })
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -21,7 +30,7 @@
             <img src="resources/imgs/Protech-logo-white.png" alt="Protech">
         </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
+            
             <li class="nav-item">
                 <a href="/" class="nav-link">Inicio</a>
             </li>
@@ -47,10 +56,10 @@
                     <h2 class="p-3">Registrar venta</h2>
                 </div>
                 <div class="card-body">
-                    <form id="registerP">
+                    <form id="registerP"> 
 
                         <div id="duplicar">
-                        <div class="row">
+                        <div class="row">    
                         <div class=" col-md-12 "  style="display: inline-flex; ">
                             <div class="mb-4 col-md-6">
                                 <label for="">Elige El Producto</label>
@@ -61,12 +70,12 @@
                                          <% } %>
                                 </select>
                             </div>
-
+                                
                             <div class="mb-4 col-md-3 " style=" margin-left: 5px;">
                                 <label for="">cantidad vendida </label>
                                 <input  type="number" class="form-control" name="cantidad" min="1" value="" id="cantidad" onclick="">
                             </div>
-
+                          
                            <div class="m4 col-md-2 " style="margin-top: 24px; margin-left: 20px;">
                                <button class="btn btn-secondary" type="button">
                                    +
