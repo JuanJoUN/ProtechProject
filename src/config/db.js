@@ -36,12 +36,12 @@ function handleDisconnect(connection_BD){
 
 handleDisconnect(connection_BD);
 
-connection.connect((error)=>{
-    if(error){
-        console.log("Error: " + error);
-    }else{
-        console.log("Conexión a la BD exitosa")
-    }
-});
-
-module.exports = connection;
+// connection.connect((error)=>{
+//     if(error){
+//         console.log("Error: " + error);
+//     }else{
+//         console.log("Conexión a la BD exitosa")
+//     }
+// });
+//
+// module.exports = connection;
