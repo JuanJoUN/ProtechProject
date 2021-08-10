@@ -36,4 +36,6 @@ function handleDisconnect(connection_BD){
 
 handleDisconnect(connection_BD);
 
+module.exports = connection;
+
 
