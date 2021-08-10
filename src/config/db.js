@@ -16,15 +16,15 @@ const connection_BD = {
 };
 
 function handleDisconnect(connection_BD){
-    connection = mysql.createPool(connection_BD);
-    connection.getConnection(function (error){
+    connectionn = mysql.createPool(connection_BD);
+    connectionn.getConnection(function (error){
         if (error){
             console.log("Error while connecting to db: ", error);
             setTimeout(handleDisconnect, 2000);
         }
     });
 
-    connection.on('error', function (error){
+    connectionn.on('error', function (error){
         console.log('Database error', error);
         if (error.code === 'PROTOCOL_CONNECTION_LOST'){
             handleDisconnect();
@@ -36,12 +36,4 @@ function handleDisconnect(connection_BD){
 
 handleDisconnect(connection_BD);
 
-// connection.connect((error)=>{
-//     if(error){
-//         console.log("Error: " + error);
-//     }else{
-//         console.log("Conexión a la BD exitosa")
-//     }
-// });
-//
-// module.exports = connection;
+
