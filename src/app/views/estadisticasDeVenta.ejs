@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Protech</title>
+    <link rel="icon" href="/resources/imgs/logo-white.ico">
+    <link rel="stylesheet" href="/resources/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="nav-cont">
+            <a href="./productos" class="navbar-brand">
+                <img src="resources/imgs/Protech-logo-white.png" alt="Protech">
+            </a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Estadísticas</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/usuarios" class="nav-link">Usuarios</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <div class="container" style="text-align: center;">
+        <h6>!!ADVERTENCIA!!</h6>
+    <P>Por favor para poder visualizar las estadisticas debera oprimir 2 veses el boton del teclado [F12]</P>
+    </div>
+    
+    <br>
+    <div class="container">
+        <div class="row d-flex justify-content-center"
+            style="border: 1px solid #474b4e; border-radius: 5px; text-align: center;">
+
+
+            <h3> Cantidad de Ventas de productos por codigo</h2>
+                <div style="display:inline-block  ;">
+                <div id='app'>
+                    <chart style="width: 30%; margin-left: 10px; display:inline-block; "></chart>
+                </div>
+            <h3> Total de ganacias de Ventas de productos por codigo</h2>
+                <div id='app2'>
+                    <chart style="width: 30%; margin-left: 10px;  display:inline-block; "></chart>
+                </div>
+            </div>
+                <br>
+                
+                <a href="/listaProductosVendidos" class="btn btn-primary" style="width: 30%;" type="button"> lista de
+                    productos vendidos</a>
+                <br>
+                <h3>Compras segun la fecha y el cliente</h2>
+
+                    <div id='app3'>
+                        <chart style="width: 40%; margin-left: 10px;  display:inline-block; "></chart>
+                    </div>
+                    <br>
+                    <a href="/listaClientes" class="btn btn-primary" style="width: 30%;" type="button"> lista de
+                        clientes</a>
+                    <br>
+                    <h3>ganacias</h2>
+
+                        <h4>ventas totales</h4>
+                        <div
+                            style="display: inline-block; width: 50%; text-align: left; margin-bottom: 40px;">
+                            <div style="display: inline-block; width: 25%; text-align: center; margin-left: 150px; border: solid #474b4e 1px ; border-radius: 5px; ">
+                                <h5>precio bruto</h5>
+                                <span >
+                                    $<%= total_bruto_sum %>
+                                </span>
+                            </div>
+                            <div style="display: inline-block; width: 25%; text-align: center; border: solid #474b4e 1px ; border-radius: 5px;">
+                                <h5>precio total</h5>
+                                <span>
+                                    $<%= total_sum %>
+                                </span>
+                            </div>
+                        </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+    <script>
+        let url = 'apiestadisticasDetalleFactura'
+        let url2 = 'apiEstadisticasEncabezadoFactura'
+        Vue.component('chart', {
+            extends: VueChartJs.Pie,
+            data() {
+                return {
+                    codigoProducto: [],
+                    cantidad: [],
+                    bgColors: ['#f696af', '#aa77c3', '#5d58d7', '#6165c2', '#6571ac', '#FF9AA2', '#FFB7B2', '#FFDAC1', '#E2F0CB', '#B5EAD7']
+                }
+            },
+            mounted() {
+                this.mostrar()
+                this.renderChart({
+
+                    labels: this.codigoProducto,
+                    datasets: [
+                        {
+                            label: 'GRAFICOS',
+                            backgroundColor: this.bgColors,
+                            data: this.cantidad
+                        }
+                    ]
+                }, { resposive: true, maintainAspectRadio: false })
+            },
+            methods: {
+                mostrar() {
+                    axios
+                        .get(url)
+                        .then(response => {
+                            response.data.forEach(element => {
+                                this.codigoProducto.push(element.codigoProducto)
+                                this.cantidad.push(element.cantidad)
+                            })
+                        })
+                }
+            }
+
+        })
+
+        new Vue({
+            el: '#app',
+
+        })
+        Vue.component('chart', {
+            extends: VueChartJs.Pie,
+            data() {
+                return {
+                    codigoProducto: [],
+                    valor_bruto: [],
+                    bgColors: [  '#FFB7B2', '#FF9AA2', '#E2F0CB','#FFDAC1', '#B5EAD7','#5d58d7','#f696af', '#aa77c3', '#5d58d7', '#6165c2']
+                }
+            },
+            mounted() {
+                this.mostrar()
+                this.renderChart({
+
+                    labels: this.codigoProducto,
+                    datasets: [
+                        {
+                            label: 'GRAFICOS',
+                            backgroundColor: this.bgColors,
+                            data: this.valor_bruto
+                        }
+                    ]
+                }, { resposive: true, maintainAspectRadio: false })
+            },
+            methods: {
+                mostrar() {
+                    axios
+                        .get(url)
+                        .then(response => {
+                            response.data.forEach(element => {
+                                this.codigoProducto.push(element.codigoProducto)
+                                this.valor_bruto.push(element.valor_bruto)
+                            })
+                        })
+                }
+            }
+
+        })
+
+        new Vue({
+            el: '#app2',
+
+        })
+        Vue.component('chart', {
+            extends: VueChartJs.Bar,
+            data() {
+                return {
+                    fechaFactura: [],
+                    valorNeto: [],
+                    bgColors: [  '#FFB7B2', '#FF9AA2', '#E2F0CB','#FFDAC1', '#B5EAD7','#5d58d7','#f696af', '#aa77c3', '#5d58d7', '#6165c2']
+                }
+            },
+            mounted() {
+                this.mostrar()
+                this.renderChart({
+
+                    labels: this.fechaFactura,
+                    datasets: [
+                        {
+                            label: 'Ventas segun la fecha',
+                            backgroundColor: this.bgColors,
+                            data: this.valorNeto
+                        }
+                    ]
+                }, { resposive: true, maintainAspectRadio: false })
+            },
+            methods: {
+                mostrar() {
+                    axios
+                        .get(url2)
+                        .then(response => {
+                            response.data.forEach(element => {
+                                this.fechaFactura.push(element.fechaFactura)
+                                this.valorNeto.push(element.valorNeto)
+                            })
+                        })
+                }
+            }
+
+        })
+
+        new Vue({
+            el: '#app3',
+
+        })
+    </script>
