@@ -35,7 +35,9 @@
             <li class="nav-item">
                     <a href="/RegistrarVentas" class="nav-link">Registrar Ventas</a>
              </li>
+
         </ul>
+        <a href="logout" class="btn btn-danger logoutAggP">Cerrar sesión</a>
     </div>
 </nav>
 
@@ -56,7 +58,7 @@
                             <div class="mb-4 col-md-6">
                                 <label for="">Elige El Producto</label>
                                 <select id="select-p" name="codigoProducto"  class="form-select">
-                                    <option>elige un producto</option>
+                                    <option>------/-------</option>
                                     <% for (let i = 0; i < producto.length; i++) { %>
                                         <option data-price="<%= producto[i].precio%>" value="<%= producto[i].codigoProducto%>" ><%= producto[i].nombre_producto%> (Disponible: <%= producto[i].stock%>)    </option>
                                          <% } %>
@@ -64,7 +66,7 @@
                             </div>
 
                             <div class="mb-4 col-md-3 " style=" margin-left: 5px;">
-                                <label for="">cantidad vendida </label>
+                                <label for="">Cantidad</label>
                                 <input  type="number" class="form-control" name="cantidad" min="1" value="" id="cantidad" onclick="">
                             </div>
 
@@ -77,15 +79,15 @@
                         </div>
                     </div>
                     <div class="mb-4">
-                        <label for="">nombre del cliente</label>
+                        <label for="">Nombre del cliente</label>
                         <input type="text" class="form-control" name="cedula_cliente" id="nombreCliente">
                     </div>
                     <div class="mb-4">
-                        <label for="">direccion</label>
+                        <label for="">Dirección</label>
                         <input type="text" class="form-control" name="cedula_cliente" id="direccionCliente">
                     </div>
                     <div class="mb-4">
-                        <label for="">numero de telefono / celular del cliente </label>
+                        <label for="">Número de telefono / Celular del cliente </label>
                         <input type="text" class="form-control" name="cedula_cliente" id="celularCliente">
                     </div>
                         <div class="mb-4">
@@ -105,7 +107,7 @@
                             <input type="number" readonly id="elementValorTotal" ><span>$</span>
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-success">agregar ventas</button>
+                            <button type="submit" class="btn btn-success">Registrar</button>
                         </div>
                     </form>
                 </div>
