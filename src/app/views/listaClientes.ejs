@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Protech</title>
+    <link rel="icon" href="/resources/imgs/logo-white.ico">
+    <link rel="stylesheet" href="/resources/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"
+            defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body class="users">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="nav-cont">
+        <a href="/" class="navbar-brand">
+            <img src="resources/imgs/Protech-logo-white.png" alt="Protech">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a href="/" class="nav-link">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a href="/Estadisticas" class="nav-link">Estadísticas</a>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a href="/RegistrarVentas" class="nav-link">Registrar Ventas</a>
+            </li>
+        </ul>
+        <a href="logout" class="btn btn-danger logout">Cerrar sesión</a>
+    </div>
+</nav>
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <div class="row d-flex justify-content-center" style="text-align: center;">
+    
+    <h2>lista de clientes</h2>
+    <p>la lista de clientes muestra los clientes a los que se les a vendido a esta lista no se le peuden relizar cambios</p>
+    <table class="table table-dark table-hover">
+    <tr>
+        <th>Cedula</th>
+        <th>Nombre</th>
+        <th>direccion</th>
+        <th>numero celular</th>
+        
+    </tr>
+    <% for (let i = 0; i < clientes.length; i++) { %>
+        <tr>
+            <td><%= clientes[i].cedula_cliente %></td>
+            <td><%= clientes[i].nombre_cliente %></td>
+            <td><%= clientes[i].direccion %></td>
+            <td><%= clientes[i].numero_celular %></td>
+        </td>
+        <% } %> 
+    </tr>
+    
+</div>
+</div>
+</body>
+</html>
