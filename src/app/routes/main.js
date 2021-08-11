@@ -343,3 +343,91 @@ app.post('/registrarSalida', async (req, res) => {
             })
 
     });
+// estadisticas y api de estaidisticas 
+app.get('/Estadisticas', (req, res) => {
+    connection.query('SELECT SUM(valor_bruto) AS total_bruto_sum, SUM(total) AS total_sum FROM detalle_factura', (error, result) => {
+        if (error) {
+            res.send(error)
+        } else {
+            console.log(result)
+            res.render('../views/estadisticasDeVenta.ejs', {
+                total_bruto_sum: result[0].total_bruto_sum,
+                total_sum: result[0].total_sum 
+            
+            });
+            
+        }
+    })
+});
+app.get('/prueba', (req,res)=>{
+  connection.query("SELECT SUM(valor_bruto) AS total_bruto_sum, SUM(total) AS total_sum FROM detalle_factura", (error, result) => {
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(console.log(result))
+            };
+    })
+});
+
+app.get('/listaClientes', (req, res) => {
+    connection.query('SELECT * FROM cliente ORDER BY cedula_cliente', (error, result) => {
+        if (error) {
+            res.send(error)
+        } else {
+            res.render('../views/listaClientes.ejs', {
+                clientes: result
+            });
+        }
+    })
+});
+app.get('/listaProductosVendidos', (req, res) => {
+    connection.query('SELECT * FROM detalle_factura ORDER BY codigoProducto', (error, result) => {
+        if (error) {
+            res.send(error)
+        } else {
+            res.render('../views/listaProductosVendidos.ejs', {
+                productos: result
+            });
+
+        }
+    })
+});
+
+
+// api
+app.get("/apiEstadisticasDetalleFactura", (req, res) => {
+    const sql = "SELECT codigoProducto, SUM(cantidad) cantidad, SUM(valor_bruto) valor_bruto, SUM(total) total FROM detalle_factura GROUP BY codigoProducto";
+    connection.query(sql, (error, results) => {
+        if (error) throw error;
+        if (results.length > 0) {
+            res.json(results);
+        } else {
+            res.send('not result');
+        }
+    })
+})
+// SELECT codigoProducto, SUM(cantidad), SUM(valor_bruto), SUM(total)
+// FROM detalle_factura
+// GROUP BY codigoProducto;
+app.get("/apiEstadisticasProductos", (req, res) => {
+    const sql = 'SELECT * FROM producto';
+    connection.query(sql, (error, results) => {
+        if (error) throw error;
+        if (results.length > 0) {
+            res.json(results);
+        } else {
+            res.send('not result');
+        }
+    })
+})
+app.get("/apiEstadisticasEncabezadoFactura", (req, res) => {
+    const sql = 'SELECT fechaFactura, SUM(valorNeto) valorNeto FROM encabezado_factura GROUP BY fechaFactura ';
+    connection.query(sql, (error, results) => {
+        if (error) throw error;
+        if (results.length > 0) {
+            res.json(results);
+        } else {
+            res.send('not result');
+        }
+    })
+})
