@@ -31,7 +31,7 @@
                 <a href="/Estadisticas" class="nav-link">Estadísticas</a>
             </li>
             <li class="nav-item">
-                <a href="/" class="nav-link">Productos</a>
+                <a href="/usuarios" class="nav-link">Usuarios</a>
             </li>
             <li class="nav-item">
                 <a href="/RegistrarVentas" class="nav-link">Registrar Ventas</a>
@@ -45,7 +45,7 @@
     <br>
     <br>
     <div class="row d-flex justify-content-center" style="text-align: center;">
-    
+
     <h2>lista de productos vendidos</h2>
     <p>la lista de productos vendidos muestra los productos que se an vendido, a esta lista no se le peuden relizar cambios</p>
     <table class="table table-dark table-hover">
@@ -54,7 +54,7 @@
         <th>cantidad vendida</th>
         <th>valor bruto</th>
         <th>total</th>
-        
+
     </tr>
     <% for (let i = 0; i < productos.length; i++) { %>
         <tr>
@@ -63,9 +63,9 @@
             <td><%= productos[i].valor_bruto%></td>
             <td><%= productos[i].total %></td>
         </td>
-        <% } %> 
+        <% } %>
     </tr>
-    
+
 </div>
 </div>
 </body>

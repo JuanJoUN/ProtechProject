@@ -28,63 +28,70 @@
                     <a href="/" class="nav-link">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link">Estadísticas</a>
+                    <a href="/Estadisticas" class="nav-link">Estadísticas</a>
                 </li>
                 <li class="nav-item">
                     <a href="/usuarios" class="nav-link">Usuarios</a>
                 </li>
+                <li class="nav-item">
+                    <a href="/RegistrarVentas" class="nav-link">Registrar Ventas</a>
+                </li>
+                <li class="nav-item">
+                    <a href="aboutUs" class="nav-link">Acerca de</a>
+                </li>
             </ul>
+            <a href="logout" class="btn btn-danger logoutAggP">Cerrar sesión</a>
         </div>
     </nav>
     <br>
     <div class="container" style="text-align: center;">
         <h6>!!ADVERTENCIA!!</h6>
-    <P>Por favor para poder visualizar las estadisticas debera oprimir 2 veses el boton del teclado [F12]</P>
+    <p>Por favor para poder visualizar las estadisticas debera oprimir 2 veces el boton del teclado [F12]</p>
     </div>
-    
+
     <br>
     <div class="container">
         <div class="row d-flex justify-content-center"
             style="border: 1px solid #474b4e; border-radius: 5px; text-align: center;">
 
 
-            <h3> Cantidad de Ventas de productos por codigo</h2>
+            <h3> Cantidad de Ventas de productos por código</h2>
                 <div style="display:inline-block  ;">
                 <div id='app'>
                     <chart style="width: 30%; margin-left: 10px; display:inline-block; "></chart>
                 </div>
-            <h3> Total de ganacias de Ventas de productos por codigo</h2>
+            <h3> Total de ganacias de Ventas de productos por código</h2>
                 <div id='app2'>
                     <chart style="width: 30%; margin-left: 10px;  display:inline-block; "></chart>
                 </div>
             </div>
                 <br>
-                
+
                 <a href="/listaProductosVendidos" class="btn btn-primary" style="width: 30%;" type="button"> lista de
                     productos vendidos</a>
                 <br>
-                <h3>Compras segun la fecha y el cliente</h2>
+                <h3>Compras según fecha y cliente</h2>
 
                     <div id='app3'>
                         <chart style="width: 40%; margin-left: 10px;  display:inline-block; "></chart>
                     </div>
                     <br>
-                    <a href="/listaClientes" class="btn btn-primary" style="width: 30%;" type="button"> lista de
+                    <a href="/listaClientes" class="btn btn-primary" style="width: 30%;" type="button"> Lista de
                         clientes</a>
                     <br>
                     <h3>ganacias</h2>
 
-                        <h4>ventas totales</h4>
+                        <h4>Ventas totales</h4>
                         <div
                             style="display: inline-block; width: 50%; text-align: left; margin-bottom: 40px;">
                             <div style="display: inline-block; width: 25%; text-align: center; margin-left: 150px; border: solid #474b4e 1px ; border-radius: 5px; ">
-                                <h5>precio bruto</h5>
+                                <h5>Precio bruto</h5>
                                 <span >
                                     $<%= total_bruto_sum %>
                                 </span>
                             </div>
                             <div style="display: inline-block; width: 25%; text-align: center; border: solid #474b4e 1px ; border-radius: 5px;">
-                                <h5>precio total</h5>
+                                <h5>Precio total</h5>
                                 <span>
                                     $<%= total_sum %>
                                 </span>
