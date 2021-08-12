@@ -343,7 +343,7 @@ app.post('/registrarSalida', async (req, res) => {
             })
 
     });
-// estadisticas y api de estaidisticas 
+// estadisticas y api de estadisticas
 app.get('/Estadisticas', (req, res) => {
     connection.query('SELECT SUM(valor_bruto) AS total_bruto_sum, SUM(total) AS total_sum FROM detalle_factura', (error, result) => {
         if (error) {
@@ -352,10 +352,10 @@ app.get('/Estadisticas', (req, res) => {
             console.log(result)
             res.render('../views/estadisticasDeVenta.ejs', {
                 total_bruto_sum: result[0].total_bruto_sum,
-                total_sum: result[0].total_sum 
-            
+                total_sum: result[0].total_sum
+
             });
-            
+
         }
     })
 });
