@@ -220,9 +220,14 @@ app.get('/RegistrarVentas', (req, res)=>{
             if (error){
                 res.send(error)
             }else{
-                res.render('../views/salidaVentas.ejs', {
-                    producto: result
-                });
+                if (req.session.role === "ADMINISTRATIVO"){
+                    res.render('../views/salidaVentas.ejs', {
+                        producto: result
+                    });
+                }else{
+                    res.status(404).send("Ooops no tienes permisos para ingresar aquí");
+                }
+
             }
         })
     });
@@ -349,12 +354,16 @@ app.get('/Estadisticas', (req, res) => {
         if (error) {
             res.send(error)
         } else {
-            console.log(result)
-            res.render('../views/estadisticasDeVenta.ejs', {
-                total_bruto_sum: result[0].total_bruto_sum,
-                total_sum: result[0].total_sum
+            if (req.session.role === "ADMINISTRATIVO"){
+                console.log(result)
+                res.render('../views/estadisticasDeVenta.ejs', {
+                    total_bruto_sum: result[0].total_bruto_sum,
+                    total_sum: result[0].total_sum
 
-            });
+                });
+            }else{
+                res.status(404).send("Ooops no tienes permisos para ingresar aquí");
+            }
 
         }
     })
@@ -374,9 +383,14 @@ app.get('/listaClientes', (req, res) => {
         if (error) {
             res.send(error)
         } else {
-            res.render('../views/listaClientes.ejs', {
-                clientes: result
-            });
+            if(req.session.role === "ADMINISTRATIVO"){
+                res.render('../views/listaClientes.ejs', {
+                    clientes: result
+                });
+            }else{
+                res.status(404).send("Ooops no tienes permisos para ingresar aquí");
+            }
+
         }
     })
 });
@@ -385,9 +399,14 @@ app.get('/listaProductosVendidos', (req, res) => {
         if (error) {
             res.send(error)
         } else {
-            res.render('../views/listaProductosVendidos.ejs', {
-                productos: result
-            });
+            if(req.session.role === "ADMINISTRATIVO"){
+                res.render('../views/listaProductosVendidos.ejs', {
+                    productos: result
+                });
+            }else{
+                res.status(404).send("Ooops no tienes permisos para ingresar aquí");
+            }
+
 
         }
     })
