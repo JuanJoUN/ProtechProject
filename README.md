@@ -1,5 +1,5 @@
 # ProtechProject
 
 **Datos de Ingreso:**  
-**Usuario :*** *Juan*  
+**Usuario :** *Juan*  
 **Contraseña :** *1234*
